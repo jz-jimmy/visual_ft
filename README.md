@@ -35,7 +35,24 @@ Tiamat/
 
 ## Workflow
 
-### 1. Prepare Data
+### 1. Quick Start (Using Helper Scripts)
+We provide helper scripts for typical workflows. These are also used as entry points for Docker containers.
+
+**Standard Fine-Tuning** (SDG Data Only):
+```bash
+./run_finetune.sh
+```
+
+**Co-Fine-Tuning** (SDG + COCO Data):
+```bash
+./run_co_finetune.sh
+```
+
+*Note: These scripts automatically search for `../sdg_dataset` or `../sdg_output`. You can override the location by setting the `SDG_DATA_DIR` environment variable.*
+
+### 2. Manual Workflow
+
+#### A. Prepare Data
 Extracts the raw SDG output, splits it into Train/Val/Test, and formats it for YOLO.
 
 **Option A: Standard SDG Fine-Tuning**
