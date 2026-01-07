@@ -1,0 +1,19 @@
+# Core DL
+torch>=2.0.0
+torchvision>=0.15.0
+
+# YOLO
+ultralytics>=8.1.0
+
+# Grounding DINO (via Transformers)
+transformers>=4.36.0
+accelerate>=0.25.0
+timm
+
+# Logging & Utils
+wandb
+pycocotools
+opencv-python
+tqdm
+scipy
+matplotlib
