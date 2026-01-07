@@ -10,6 +10,8 @@ def parse_args():
     parser.add_argument("--data", type=str, default="data/data.yaml", help="Path to data.yaml")
     parser.add_argument("--epochs", type=int, default=50, help="Number of epochs")
     parser.add_argument("--batch", type=int, default=16, help="Batch size")
+    parser.add_argument("--model", type=str, default="yolov8s-world.pt", 
+                       help="One of: yolov8s-world.pt, yolov8m-world.pt, yolov8l-world.pt, yolov8x-world.pt")
     parser.add_argument("--device", type=str, default="0", help="CUDA device")
     parser.add_argument("--project", type=str, default="visual_fine_tune", help="WandB project name")
     parser.add_argument("--name", type=str, default="yolo_world_finetune", help="Run name")
@@ -29,8 +31,10 @@ def main():
     wandb.init(project=args.project, name=args.name, job_type="training", config=vars(args))
 
     # Load a pretrained YOLOv8s-World model
-    print("Loading YOLOv8s-World model...")
-    model = YOLOWorld('yolov8s-world.pt')  # or yolov8m-world.pt, l, x
+    print(f"Loading {args.model} model...")
+    if not args.model.endswith('.pt'):
+         args.model += '.pt'
+    model = YOLOWorld(args.model) 
 
     # 1. Set the classes from data.yaml (Offline Vocabulary)
     # Actually, when training, we just pass the data argument, and Ultralytics

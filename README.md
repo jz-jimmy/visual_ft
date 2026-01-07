@@ -43,6 +43,14 @@ We provide helper scripts for typical workflows. These are also used as entry po
 ./run_finetune.sh
 ```
 
+**Choose Model Version**:
+You can select different YOLO-World versions by setting the `MODEL` environment variable.
+Available options: `yolov8s-world.pt` (Small), `yolov8m-world.pt` (Medium), `yolov8l-world.pt` (Large), `yolov8x-world.pt` (XLarge).
+
+```bash
+MODEL=yolov8m-world.pt ./run_finetune.sh
+```
+
 **Co-Fine-Tuning** (SDG + COCO Data):
 ```bash
 ./run_co_finetune.sh

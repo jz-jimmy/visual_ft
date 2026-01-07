@@ -15,9 +15,13 @@ else
     exit 1
 fi
 
+# Model Selection (default: yolov8s-world.pt)
+MODEL=${MODEL:-"yolov8s-world.pt"}
+
 echo "========================================================"
 echo "Starting Standard Visual Fine-Tuning (SDG Only)"
-echo "Source Data: $SOURCE_DIR"
+echo "Source Data:   $SOURCE_DIR"
+echo "Model Version: $MODEL"
 echo "========================================================"
 
 # Step 1: Prepare Data
@@ -28,6 +32,7 @@ python3 prepare_data.py --source_dir "$SOURCE_DIR" --output_dir "data"
 echo "[2/2] Running YOLO Training..."
 python3 train_yolo.py \
     --data "data/data.yaml" \
+    --model "$MODEL" \
     --epochs 50 \
     --batch 16 \
     --name "yolo_sdg_finetune" \
